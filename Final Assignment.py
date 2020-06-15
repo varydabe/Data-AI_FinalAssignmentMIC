@@ -1,4 +1,3 @@
-#Varyd Abe - Microsoft Imagine Community 2020
 from tkinter import *
 
 
@@ -14,11 +13,11 @@ def printPredict():
 
     #if else func to give result    
     if hasil==1:
-            label_positif = Label(root, text="POSITIF")
-            label_positif.grid(row=5, column=2)
+            label_positif = Label(root, text="SUSPECTED POSITIVE")
+            label_positif.grid(row=7, column=2)
     else:
-            label_negatif = Label(root, text="NEGATIF")
-            label_negatif.grid(row=5, column=2)
+            label_negatif = Label(root, text="SUSPECTED NEGATIVE")
+            label_negatif.grid(row=7, column=2)
 
 #machine learning func, kNN algorithm
 def ml(wkt, jml, suhu):
@@ -56,34 +55,35 @@ root=Tk()
 
 #window func, title and resizeable
 root.resizable(FALSE,FALSE)
-root.title("Aplikasi prediksi infeksi COVID-19")
+root.title("Covid-19 Suspect Prediction")
 
 #widget label, button, and entry
-label_header = Label(root, text="Aplikasi prediksi infeksi COVID-19")
-label_wkt = Label(root, text="Lama waktu berada diluar ruangan(menit):")
+label_header = Label(root, text="This app will predict your status based on these three variable")
+label_wkt = Label(root, text="Time spend with other people(minutes):")
 entry_wkt = Entry(root)
-label_jml = Label(root, text="Jumlah orang yang ditemui:")
+label_jml = Label(root, text="Number of people interaction:")
 entry_jml = Entry(root)
-label_suhu  = Label(root, text="Suhu tubuh:")
+label_suhu  = Label(root, text="Body temperature(°C):")
 entry_suhu = Entry(root)
 
-button_prd = Button(root, text="Prediksi", command=printPredict)
+button_prd = Button(root, text="Predict", command=printPredict)
 
-label_hasil  = Label(root, text="Menurut prediksi, kondisi Anda adalah")
-label_ext  = Label(root, text="Disarankan untuk melakukan pemeriksaan lebih lanjut di fasilitas kesehatan")
+label_hasil  = Label(root, text="Based on predict with Machine learning, your status is")
+label_ext  = Label(root, text="It is recommended to conduct further tests at a health facility")
 
 #calling the widget obj and position
-label_wkt.grid(row=1, column=1, sticky=E)
-entry_wkt.grid(row=1, column=2)
-label_jml.grid(row=2, column=1,sticky=E)
-entry_jml.grid(row=2, column=2)
-label_suhu.grid(row=3, column=1,sticky=E)
-entry_suhu.grid(row=3, column=2)
+label_header.grid(columnspan=3)
+label_wkt.grid(row=2, column=1, sticky=E)
+entry_wkt.grid(row=2, column=2, sticky=W)
+label_jml.grid(row=3, column=1,sticky=E)
+entry_jml.grid(row=3, column=2, sticky=W)
+label_suhu.grid(row=4, column=1,sticky=E)
+entry_suhu.grid(row=4, column=2, sticky=W)
 
-button_prd.grid(columnspan=4)
+button_prd.grid(columnspan=3)
 
-label_hasil.grid(row=5, column=1)
-label_ext.grid(columnspan=4)
+label_hasil.grid(row=7, column=1)
+label_ext.grid(columnspan=3)
 
 #calling the root to loop until the window closed
 root.mainloop()
